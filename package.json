@@ -3,9 +3,17 @@
   "version": "1.0.0",
   "description": "Prototype of Forge's IOS/Android App",
   "main": "Readme.md",
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-3": "^6.5.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "babel-node fetchData"
   },
   "author": "Sanath Mullapudi",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "selenium-webdriver": "^3.0.0-beta-2"
+  }
 }
