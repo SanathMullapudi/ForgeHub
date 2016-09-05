@@ -1,0 +1,11 @@
+{
+  "name": "forgehub",
+  "version": "1.0.0",
+  "description": "Prototype of Forge's IOS/Android App",
+  "main": "Readme.md",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sanath Mullapudi",
+  "license": "ISC"
+}
