@@ -1,19 +1,27 @@
 {
-  "name": "forgehub",
-  "version": "1.0.0",
+  "name": "ForgeHub",
+  "version": "0.0.1",
   "description": "Prototype of Forge's IOS/Android App",
-  "main": "Readme.md",
-  "devDependencies": {
-    "babel-cli": "^6.10.1",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-stage-3": "^6.5.0"
-  },
-  "scripts": {
-    "start": "babel-node fetchData"
-  },
   "author": "Sanath Mullapudi",
-  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "packager": "node node_modules/react-native/local-cli/cli.js start",
+    "server": "babel-node ./graphql/server.js",
+    "update-schema": "babel-node ./graphql/scripts/updateSchema.js"
+  },
   "dependencies": {
+    "babel-preset-react-native": "1.9.0",
+    "babel-relay-plugin": "0.9.3",
+    "express": "4.14.0",
+    "express-graphql": "0.5.4",
+    "graphql": "0.7.0",
+    "graphql-relay": "0.4.3",
+    "react": "15.3.1",
+    "react-native": "0.32.0",
+    "react-relay": "0.9.3",
     "selenium-webdriver": "^3.0.0-beta-2"
+  },
+  "devDependencies": {
+    "babel-cli": "6.14.0"
   }
 }
