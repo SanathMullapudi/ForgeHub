@@ -1,0 +1,14 @@
+{
+  "passPerPreset": true,
+  "presets": [
+    {"plugins":
+      [
+        "./graphql/plugins/babelRelayPlugin"
+      ]
+    },
+    "react-native"
+  ],
+  "ignore": [
+    "dedupeSet.js"
+  ]
+}
