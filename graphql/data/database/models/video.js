@@ -2,17 +2,14 @@ import mongoose, {Schema} from 'mongoose';
 
 const videoSchema = Schema({
   title: String,
-  picture: String,
+  pic: String,
   src: String,
   href: String,
   author: { type: Schema.Types.ObjectId, ref: 'User' },
   game: { type: Schema.Types.ObjectId, ref: 'Game' },
-  viewers: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  likes: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  viewedBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  likedBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
 });
-
-videoSchema.methods.updateViewers = function (newViewers) {
-  this.viewers = newViewers;
-};
 
 export default Video = mongoose.model('Video', videoSchema);

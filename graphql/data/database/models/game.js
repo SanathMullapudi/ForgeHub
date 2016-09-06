@@ -2,17 +2,13 @@ import mongoose, {Schema} from 'mongoose';
 
 const gameSchema = Schema({
   name: String,
-  picture: String,
-  videos: [{ type: Schema.Types.ObjectId, ref: 'Video' }],
+  href: String,
+  videos: [{type: Schema.Types.ObjectId, ref: 'Video', default: []}],
 });
 
-// To be implement via a dictionary since games dont really follow a pattern
-gameSchema.methods.href = function () {
-  return null;
-};
-
 gameSchema.methods.addVideos = function (newVideos) {
-  this.videos.concat(newVideos);
+  this.videos = this.videos.concat(newVideos);
+  return this.save();
 };
 
 export default Game = mongoose.model('Game', gameSchema);

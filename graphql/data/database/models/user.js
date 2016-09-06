@@ -2,16 +2,14 @@ import mongoose, {Schema} from 'mongoose';
 
 const userSchema = Schema({
   name: String,
-  picture: String,
-  videos: [{ type: Schema.Types.ObjectId, ref: 'Video' }],
+  pic: String,
+  href: String,
+  videos: [{type: Schema.Types.ObjectId, ref: 'Video', default: []}],
 });
 
-userSchema.methods.href = function () {
-  return `http://forge.gg/${this.name}`;
-};
-
-gameSchema.methods.addVideos = function (newVideos) {
-  this.videos.concat(newVideos);
+userSchema.methods.addVideos = function (newVideos) {
+  this.videos = this.videos.concat(newVideos);
+  return this.save();
 };
 
 export default User = mongoose.model('User', userSchema);
