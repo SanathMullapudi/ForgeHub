@@ -17,4 +17,6 @@ import { introspectionQuery, printSchema } from 'graphql/utilities';
       JSON.stringify(result, null, 2)
     );
   }
+
+  process.exit();
 })();

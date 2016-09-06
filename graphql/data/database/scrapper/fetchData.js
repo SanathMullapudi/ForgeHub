@@ -15,7 +15,7 @@ import {
 driver.get(searchURL);
 
 (async () => {
-  console.time(`Finished writing ouput to ${outputFileName}`);
+  // console.time(`Finished writing ouput to ${outputFileName}`);
   // Scrape Items
   await driver.get(searchURL);
   let items  = [];
@@ -44,5 +44,5 @@ driver.get(searchURL);
   driver.quit();
   const jsonData = JSON.stringify(itemsData, null, 2);
   fs.writeFileSync(outputFileName, jsonData);
-  console.timeEnd(`Finished writing ouput to ${outputFileName}`);
+  // console.timeEnd(`Finished writing ouput to ${outputFileName}`);
 })();

@@ -8,7 +8,7 @@ import GameType from './qlObjects/game';
 import UserType from './qlObjects/user';
 import VideoType from './qlObjects/video';
 
-import {getGame, getUser, getVideo} from './databases/forgeDatabase';
+import {getGame, getUser, getVideo} from './database/forgeDatabase';
 
 const getterFuncAndTypeDict = {
   Game: { getter: getGame, QLType: GameType },

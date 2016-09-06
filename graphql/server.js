@@ -1,8 +1,14 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import graphQLHTTP from 'express-graphql';
 import {schema} from './data/schema';
 
 const GRAPHQL_PORT = 8080;
+const mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/ForgeHub';
+
+mongoose.connect(mongoUrl, function (err) {
+  err ? console.log('Mongo error: ', err) : console.log(`MongoDB connected to ${mongoUrl}`);
+});
 
 const graphQLServer = express();
 graphQLServer.use('/', graphQLHTTP({schema, graphiql: true, pretty: true}));

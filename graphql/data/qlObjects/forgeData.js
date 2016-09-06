@@ -10,7 +10,7 @@ import { GameConnection } from './game';
 import { UserConnection } from './user';
 import { VideoConnection } from './video';
 
-import { getGames, getUsers, getVideos } from '../databases/forgeDatabase';
+import { getGames, getUsers, getVideos } from '../database/forgeDatabase';
 
 const ForgeDataType = new GraphQLObjectType({
   name: 'ForgeData',

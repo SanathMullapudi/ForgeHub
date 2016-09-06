@@ -4,6 +4,10 @@ import Video from './video';
 import User from './user';
 import Game from './game';
 
+// Clean this whole file up
+// update babelrc
+import temp from './temp';
+
 const games = new DedupeSet();
 const users = new DedupeSet();
 const videos = new DedupeSet();
