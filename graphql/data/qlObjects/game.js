@@ -24,7 +24,7 @@ const GameType = new GraphQLObjectType({
     videos: {
       type: VideoConnection,
       args: connectionArgs,
-      resolve: (obj, args) => connectionFromArray(obj.videos, args),
+      resolve: async (obj, args) => connectionFromArray(await obj.fetch('videos'), args),
     },
   }),
   interfaces: () => [nodeInterface],

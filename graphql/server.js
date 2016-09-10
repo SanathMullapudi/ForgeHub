@@ -3,6 +3,10 @@ import mongoose from 'mongoose';
 import graphQLHTTP from 'express-graphql';
 import {schema} from './data/schema';
 
+// Temporary spot to fire scrapper till mutation is implemented
+import {fireScrapper} from './data/database/load';
+// fireScrapper().then(res => {console.log(res);});
+
 const GRAPHQL_PORT = 8080;
 const mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/ForgeHub';
 

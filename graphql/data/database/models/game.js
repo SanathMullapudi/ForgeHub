@@ -3,11 +3,16 @@ import mongoose, {Schema} from 'mongoose';
 const gameSchema = Schema({
   name: String,
   href: String,
-  videos: [{type: Schema.Types.ObjectId, ref: 'Video', default: []}],
+  videos: [{type: String, ref: 'Video', default: []}],
 });
 
-gameSchema.methods.addVideos = function (newVideos) {
-  this.videos = this.videos.concat(newVideos);
+gameSchema.methods.fetch = function (prop) {
+  return this.populate({path: prop}).execPopulate().then(value => value[prop]);
+};
+
+gameSchema.methods.addVideos = function (newVideosIds) {
+  const deDupedVids = newVideosIds.filter(id => !this.videos.includes(id));
+  this.videos = this.videos.concat(deDupedVids);
   return this.save();
 };
 

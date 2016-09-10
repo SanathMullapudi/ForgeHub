@@ -8,17 +8,17 @@ import GameType from './qlObjects/game';
 import UserType from './qlObjects/user';
 import VideoType from './qlObjects/video';
 
-import {getGame, getUser, getVideo} from './database/forgeDatabase';
+import { Game, Video, User, Comment } from './database/models';
 
-const getterFuncAndTypeDict = {
-  Game: { getter: getGame, QLType: GameType },
-  User: { getter: getUser, QLType: UserType },
-  Video: { getter: getVideo, QLType: VideoType },
+const modelsQlTypeDict = {
+  Game: { model: Game, QLType: GameType },
+  User: { model: User, QLType: UserType },
+  Video: { model: Video, QLType: VideoType },
 };
 
-function getObjectAndAttachType({ type, id }) {
-  let obj = getterFuncAndTypeDict[type].getter(Number(id));
-  obj._type = getterFuncAndTypeDict[type].QLType;
+async function getObjectAndAttachType({ type, id }) {
+  let obj = await (modelsQlTypeDict[type].model).findById(id);
+  obj._type = modelsQlTypeDict[type].QLType;
   return obj;
 }
 

@@ -1,7 +1,6 @@
 
 import {
   GraphQLInt,
-  GraphQLList,
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql';
@@ -15,8 +14,8 @@ import {
 
 import { nodeInterface } from '../relayNode';
 import GameType from './game';
-import UserType from './user';
-import { UserConnection } from './user';
+import UserType, { UserConnection } from './user';
+import { CommentConnection } from './comment';
 
 const VideoType = new GraphQLObjectType({
   name: 'Video',
@@ -27,16 +26,23 @@ const VideoType = new GraphQLObjectType({
     pic: { type: GraphQLString },
     src: { type: GraphQLString },
     likes: { type: GraphQLInt },
-    author: { type: UserType },
-    game: { type: GameType },
-    viewers: {
+    views: { type: GraphQLInt },
+    author: { type: UserType, resolve: obj => obj.fetch('author')},
+    game: { type: GameType, resolve: obj => obj.fetch('game')},
+    viewedBy: {
       type: UserConnection,
       args: connectionArgs,
-      resolve: (obj, args) => connectionFromArray(obj.viewers, args),
+      resolve: async (obj, args) => connectionFromArray(await obj.fetch('viewedBy'), args),
     },
-    viewersCount: {
-      type: GraphQLInt,
-      resolve: (obj, args) => obj.viewers.length,
+    likedBy: {
+      type: UserConnection,
+      args: connectionArgs,
+      resolve: async (obj, args) => connectionFromArray(await obj.fetch('likedBy'), args),
+    },
+    comments: {
+      type: CommentConnection,
+      args: connectionArgs,
+      resolve: async (obj, args) => connectionFromArray(await obj.fetch('comments'), args),
     },
   }),
   interfaces: () => [nodeInterface],

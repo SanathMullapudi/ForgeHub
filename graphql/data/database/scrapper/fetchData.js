@@ -5,14 +5,13 @@ const { By: { css } } = webdriver;
 import {
   searchURL,
   outputFileName,
-  seekingCount,
   itemSelector,
   dataFormat,
 } from './options';
 
 import {setNestedObjValue} from './helper';
 
-export async function fetchVideoToJson(...args) {
+export async function fetchVideoToJson(seekingCount = 50, jsonIntermediate = false) { // code will be refactored so, args can replace options.js file
   const driver = new webdriver.Builder().forBrowser('chrome').build();
   console.time(`Finished fetching video data to JSON`);
   console.log(`Starting scraping on ${searchURL}`);
@@ -43,9 +42,8 @@ export async function fetchVideoToJson(...args) {
     console.info(`${itemsData.length} items parsed out of ${items.length}`);
   }
   driver.quit();
-  const jsonData = JSON.stringify(itemsData, null, 2);
-  fs.writeFileSync(outputFileName, jsonData);
+  jsonIntermediate && fs.writeFileSync(outputFileName, JSON.stringify(itemsData, null, 2));
 
   console.timeEnd(`Finished fetching video data to JSON`);
-  return jsonData;
+  return itemsData;
 }
