@@ -55,14 +55,14 @@ npm run server
 ```
 
 ## License
-**I am not an expert on licenses to lets just imagine the entity Facebook is replaced with me.**
+  **I am not an expert on licenses, so lets just imagine the entity Facebook is replaced with me.**
 
-    This file provided by Facebook is for non-commercial testing and evaluation
-    purposes only.  Facebook reserves all rights not expressly granted.
+    This file provided by [Facebook/Sanath] is for non-commercial testing and evaluation
+    purposes only.  [Facebook/Sanath] reserves all rights not expressly granted.
 
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-    FACEBOOK BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+    [FACEBOOK/Sanath] BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
     ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
