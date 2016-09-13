@@ -9,7 +9,7 @@
     "compile:watch": "watch 'npm run compile' ./app.src",
     "packager": "node node_modules/react-native/local-cli/cli.js start",
     "scrapper": "babel-node ./graphql/data/database/load.js",
-    "server": "babel-node ./graphql/server.js",
+    "server": "npm run update-schema && babel-node ./graphql/server.js",
     "update-schema": "babel-node ./graphql/scripts/updateSchema.js"
   },
   "dependencies": {

@@ -5,12 +5,14 @@
 ```
 npm install -g react-native-cli && npm install
 ```
+You will need mongo, if you are using local database
 
 ## Running
 
 ### Start the GraphQL server:
 
 ```
+mongod
 npm run server
 ```
 
