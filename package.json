@@ -5,7 +5,10 @@
   "author": "Sanath Mullapudi",
   "private": true,
   "scripts": {
+    "compile": "babel app.src --out-file temp.js && uglifyjs temp.js -c -m -o ./app.dist/index.js && rm temp.js",
+    "compile:watch": "watch 'npm run compile' ./app.src",
     "packager": "node node_modules/react-native/local-cli/cli.js start",
+    "scrapper": "babel-node ./graphql/data/database/load.js",
     "server": "babel-node ./graphql/server.js",
     "update-schema": "babel-node ./graphql/scripts/updateSchema.js"
   },
@@ -18,11 +21,13 @@
     "graphql-relay": "0.4.3",
     "mongoose": "4.6.0",
     "react": "15.3.1",
-    "react-native": "0.32.0",
+    "react-native": "0.33.0",
     "react-relay": "0.9.3",
-    "selenium-webdriver": "^3.0.0-beta-2"
+    "selenium-webdriver": "3.0.0-beta-2"
   },
   "devDependencies": {
-    "babel-cli": "6.14.0"
+    "babel-cli": "6.14.0",
+    "uglify-js": "2.7.3",
+    "watch": "0.19.2"
   }
 }

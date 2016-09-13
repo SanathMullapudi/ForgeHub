@@ -7,8 +7,5 @@
       ]
     },
     "react-native"
-  ],
-  "ignore": [
-    "dedupeSet.js"
   ]
 }

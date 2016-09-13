@@ -1,17 +1,5 @@
-# ForgeHub
-- Written 8:25pm, 9/5/2016
-
-## Purpose
-  - Create prototype for Forge's IOS/Android App
-
-## Tasks
-  - Convert backend database/scrapper output from a JSON file to real database
-    - Initially start with mongodb, makes for easy prototyping
-  - Generate UI/Views for App
-    - Complete only UI for representing data on the server, leave user interactions/mutations for later
-  - Build the barebones MVP version and compress it for publication on Appetize.io
-
-### Tasks Completed Today
+# Completed Tasks by date, time, number of hours spent
+- **09/05/2016, 08:25pm, (~7 hours)**
   - Update existing tools (Node, xCode, etc.)
     - Node, Xcode, and other npm modules are all updated to latest versions that do not conflict with each other
   - Search for any new tools/updates to old tools for React Native since I last checked
@@ -43,5 +31,15 @@
   - Setup BoilerPlate for React Native and Graphql Backend Server, Relay, Babel etc.
     - Used my old 'specToGraphQL.js'/'regexTraspiler' to generate the graphql schema and it worked on first try!!
 
-## Today's Thoughts
-  - Write/Blog about experience
+- **09/10/2016, 05:10pm, (~3 hours)**
+  - Added .jscsrc
+    - Added rc file for jscs to help distinguish common maximumLine warnings from cluttering the screen.
+    - Added a custom model method on base schema of mongo to avoid repetition of '{new: true, upsert: true}' when using 'findOneAndUpdate'
+  - Convert backend database/scrapper output from a JSON file to real database
+    - Initially start with mongodb, makes for easy prototyping
+  - Complete Graphql/Mongo backend
+    - Ensure Graphql schema originally pulling from json database, now returns proper values from mongo database
+    - Delete old js files related to json database
+
+- **09/13/2016, 03:39pm, (~? hours)**
+  
