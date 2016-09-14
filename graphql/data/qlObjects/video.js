@@ -25,6 +25,7 @@ const VideoType = new GraphQLObjectType({
     title: { type: GraphQLString },
     pic: { type: GraphQLString },
     src: { type: GraphQLString },
+    timeAgo: { type: GraphQLString },
     likes: { type: GraphQLInt },
     views: { type: GraphQLInt },
     author: { type: UserType, resolve: obj => obj.fetch('author')},

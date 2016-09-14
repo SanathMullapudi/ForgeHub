@@ -11,6 +11,7 @@ const videoSchema = Schema({
   viewedBy: [{ type: String, ref: 'User' }], // a little misleading, since this people who only viewers and not likers
   likedBy: [{ type: String, ref: 'User' }], // this can be refacted, to have less misleading keys
   comments: [{ type: String, ref: 'Comment' }],
+  timeAgo: String,
 });
 
 videoSchema.methods.fetch = function (prop) {
