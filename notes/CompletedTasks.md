@@ -41,5 +41,17 @@
     - Ensure Graphql schema originally pulling from json database, now returns proper values from mongo database
     - Delete old js files related to json database
 
-- **09/13/2016, 03:39pm, (~? hours)**
-  
+- **09/13/2016, 11:50pm, (~5 hours)**
+  - Adds scaffolding for RN native app with src and dist, and npm scripts to support such
+  - Decided to use npm as build tool chain
+    - gulp, grunt, etc. would all be good options but for prototyping, npm suffices for the moment
+  - RN 0.33 came out
+    - lots of generic bug fixes and some new css properties, also includes 'adjustsFontSizeToFit' which is cool
+  - Reorganized 'notes' to have less duplication, and serve a more useful purpose
+    - Even after reorganizing notes, I still don't like it but can't spend more than 10 minutes on this
+  - Implemented scrollable tab view, to make the 3 'splash/landing' pages that remember the youtube iphone interface
+  - Severside/Graphql/scrapper added the 'timeAgo' field, simply since the youtube UI uses it and i forgot to scarpe it on first pass
+  - Finished the splash page's UI at a high level
+  - Decided to switch to just 'react-native' as the build tool
+    - as opposed to trying to get fancy with 'watch', since it isn't efficient to match fb's packager and react-native cli is ton better than before
+    - the distributions will just be the react-native bundled JS file
