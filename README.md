@@ -10,4 +10,4 @@ Progress is tracked under notes folder.
 - [ ] Write a proper README
 
 ## Credits
-Big thanks to Facebook/React Native community, for providing the tooling to blows weeks of painful work, on 2 platforms, 2+ languages, and 2 development environments with awful developer experience, out of water.
+Big thanks to Facebook/React Native community, for providing the tooling to blow weeks of painful work, on 2 platforms, 2+ languages, and 2 development environments with awful developer experience, out of water.
