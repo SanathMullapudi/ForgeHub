@@ -3,6 +3,7 @@
   "presets": [
     {"plugins":
       [
+        "transform-function-bind",
         "./graphql/plugins/babelRelayPlugin"
       ]
     },

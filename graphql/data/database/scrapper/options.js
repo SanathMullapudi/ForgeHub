@@ -59,13 +59,14 @@ export const dataFormat = new Map([
         viewerData.href = (await viewer.getAttribute('href'));
         try {
           viewerData.pic = await viewer.findElement(css('a > div > img')).getAttribute('src');
+          viewerData.pic.includes('defaultAvatar.png') ? viewerData.pic = 'https://forge.gg/public/img/defaultAvatar.png' : null;
           viewerData.likedVidBool = (await viewer.findElement(css('a > div > div')).getAttribute('style')).includes('width: 12px;');
           viewersData.push(viewerData);
         } catch (e) {} // EDGE CASE: no img/usually due to too many viewers to show
       };
       return viewersData;
     },
-  }, ],
+  },],
   ['video.comments', { // This and 'video.viewers' could be cleaned up into external function for later refactoring
     cb: async (item) => {
       let comments = await item.findElements(css('div > div:nth-child(5) > div:nth-child(1) > div'));
