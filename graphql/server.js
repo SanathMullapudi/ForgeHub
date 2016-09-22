@@ -4,7 +4,7 @@ import graphQLHTTP from 'express-graphql';
 import {schema} from './data/schema';
 import {authMW} from './scripts/auth';
 
-const GRAPHQL_PORT = 8080;
+const GRAPHQL_PORT = process.env.PORT || 8080;
 const mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/ForgeHub';
 
 console.log('here', mongoUrl);
