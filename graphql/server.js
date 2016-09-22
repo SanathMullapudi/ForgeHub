@@ -7,6 +7,8 @@ import {authMW} from './scripts/auth';
 const GRAPHQL_PORT = 8080;
 const mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/ForgeHub';
 
+console.log('here', mongoUrl);
+
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoUrl, function (err) {
   err ? console.log('Mongo error: ', err) : console.log(`MongoDB connected to ForgeHub`);
