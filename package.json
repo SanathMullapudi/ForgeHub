@@ -8,7 +8,7 @@
   },
   "private": true,
   "scripts": {
-    "build-ios": "react-native bundle --entry-file='index.ios.js' --bundle-output='./app.bundledJS/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
+    "build-ios": "react-native bundle --entry-file='index.ios.js' --bundle-output='./app.bundledJS/main.jsbundle' --reset-cache --dev=false --platform='ios' --assets-dest='./ios'",
     "packager": "node node_modules/react-native/local-cli/cli.js start",
     "scrapper": "babel-node ./graphql/data/database/tempLoader.js",
     "updateRunServer": "npm run update-schema && babel-node ./graphql/server.js",
