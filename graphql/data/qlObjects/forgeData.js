@@ -52,6 +52,11 @@ const ForgeDataType = new GraphQLObjectType({
         catch (err) {return null;}
       },
     },
+    gamesByPopularity: {
+      type: GameConnection,
+      args: connectionArgs,
+      resolve: async (_, args) => connectionFromArray(await Game.gamesByPopular(), args),
+    },
   }),
 });
 

@@ -1,14 +1,13 @@
 import {fetchVideoToJson} from './scrapper/fetchData';
 import {pushJsonToMongo} from './scrapper/helper';
 import mongoose from 'mongoose';
-import {Video, User} from './models';
+import {Video, User, Game} from './models';
 
 const mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/ForgeHub';
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoUrl, async function (err) {
   err ? console.log('Mongo error: ', err) : console.log(`MongoDB connected to ${mongoUrl}`);
-  fireScrapper(100, true).then(res => console.log(res));
-
+  // fireScrapper(100, true).then(res => console.log(res));
   // Scratch Area to run random tests on backend
   // try {
   //   const {order, sortBy} = {order: 1, sortBy: 'views'};
@@ -23,6 +22,9 @@ mongoose.connect(mongoUrl, async function (err) {
 
   // let token = await User.login('Rx3', 'Rx3');
   // console.log(token);
+
+  // let gamesSorted = await Game.gamesByPopular();
+  // console.log(gamesSorted);
 });
 
 // import forgeData from './recentFetchData.json';

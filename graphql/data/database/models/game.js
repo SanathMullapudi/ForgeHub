@@ -10,6 +10,11 @@ gameSchema.methods.fetch = function (prop) {
   return this.populate({path: prop}).execPopulate().then(value => value[prop]);
 };
 
+gameSchema.statics.gamesByPopular = async () => {
+  let games = await Game.find();
+  return games.sort((a, b) => b.videos.length - a.videos.length);
+};
+
 gameSchema.methods.addVideos = function (newVideosIds) {
   const deDupedVids = newVideosIds.filter(id => !this.videos.includes(id));
   this.videos = this.videos.concat(deDupedVids);
