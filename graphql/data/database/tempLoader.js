@@ -7,7 +7,7 @@ const mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/ForgeHub';
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoUrl, async function (err) {
   err ? console.log('Mongo error: ', err) : console.log(`MongoDB connected to ${mongoUrl}`);
-  // fireScrapper(100, true).then(res => console.log(res));
+  fireScrapper(100, true).then(res => console.log(res));
   // Scratch Area to run random tests on backend
   // try {
   //   const {order, sortBy} = {order: 1, sortBy: 'views'};
@@ -27,8 +27,8 @@ mongoose.connect(mongoUrl, async function (err) {
   // console.log(gamesSorted);
 });
 
-// import forgeData from './recentFetchData.json';
+import forgeData from './recentFetchData.json';
 export async function fireScrapper(count, jsonIntermediate) {
-  let forgeData = await fetchVideoToJson(count, jsonIntermediate);
+  // let forgeData = await fetchVideoToJson(count, jsonIntermediate);
   return await pushJsonToMongo(forgeData);
 }

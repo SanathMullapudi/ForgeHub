@@ -26,6 +26,14 @@ videoSchema.methods.fetch = function (prop) {
   return this.populate({path: prop}).execPopulate().then(value => value[prop]);
 };
 
+// Should have some validation but that can be added later
+videoSchema.statics.makeAndAddCommentToVid = async ({vidId, userId, message}) => {
+  const parentVid = await Video.findById(vidId);
+  const newComment = await Comment.create({message, author: userId, parentVid: parentVid.id});
+  parentVid.comments.push(newComment.id);
+  return await parentVid.save();
+};
+
 // This is super hacky, not perf optimized, and potentially not safe, esp. if ur mongodb is unsecured
 // The upside, client requests exact data it wants, thus minimizing REST endpoints, very graphql-esque
 // 'overcomes' mongodb lack of joins, and avoid persisting virtuals ('views', 'likes') to object/json

@@ -6,6 +6,6 @@ export const authMW = (req, res, next) => {
   try {
     payload = jwt.decode(req.headers.authorization.split(' ')[1], JWT_SECRET);
   } catch (err) {} // handle err case however we want here
-  req.user = payload;
+  req.authUser = payload;
   next();
 };

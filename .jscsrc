@@ -3,5 +3,5 @@
   "requireSpacesInsideObjectBrackets": null,
   "requireSpacesInsideImportedObjectBraces": null,
   "maximumLineLength": null,
-  "requirePaddingNewLinesAfterBlocks": null
+  "requirePaddingNewLinesAfterBlocks": null,
 }

@@ -12,6 +12,30 @@ mongoose.connect(mongoUrl, function (err) {
   err ? console.log('Mongo error: ', err) : console.log(`MongoDB connected to ForgeHub`);
 });
 
-const graphQLServer = express();
-graphQLServer.use('/', authMW, graphQLHTTP({schema, graphiql: true, pretty: true}));
-graphQLServer.listen(GRAPHQL_PORT, () => console.log(`GraphQL Server is now running on `));
+const graphQLApp = express();
+graphQLApp.use('/', authMW, graphQLHTTP({schema, graphiql: true, pretty: true}));
+const graphQLServer = graphQLApp.listen(GRAPHQL_PORT, () => console.log(`GraphQL Server is now running`));
+
+const io = require('socket.io')(graphQLServer, { serverClient: false });
+
+io.on('connection', socket => {
+  let chatRoom = '';
+  //For the future should we want multiple subscriptions, room cound be [] and we would joinAll, could also be seperate namespace
+  // socket.on('mutationRoom', room => socket.join(room));
+  socket.on('room', ({roomId, userInfo}) => {
+    chatRoom = roomId;
+    socket.join(chatRoom);
+    const room = io.sockets.adapter.rooms[chatRoom];
+    room.users ? room.users.set(socket.id, userInfo) : room.users = new Map([[socket.id, userInfo]]);
+    io.to(chatRoom).emit('liveViewerChange', [...room.users.values()]);
+  });
+  socket.on('disconnect', () => {
+    const room = io.sockets.adapter.rooms[chatRoom];
+    room && room.users && (room.users.delete(socket.id), io.to(chatRoom).emit('liveViewerChange', [...room.users.values()]));
+  });
+  socket.on('sendMessage', data => socket.broadcast.to(chatRoom).emit('chatMessage', data));
+});
+
+export function emitMessageToRoom(room, mutationData) {
+  io.to(room).emit('mutation', mutationData);
+}

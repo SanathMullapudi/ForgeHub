@@ -34,7 +34,7 @@ export async function fetchVideoToJson(seekingCount = 50, jsonIntermediate = fal
     await driver.executeScript('arguments[0].scrollIntoView();', item);
     for (const [key, { sel, attr, cb }] of dataFormat.entries()) {
       try {
-        let value = cb ? await cb(item) : await item.findElement(css(sel)).getAttribute(attr);
+        let value = cb ? await cb(item, driver) : await item.findElement(css(sel)).getAttribute(attr);
         setNestedObjValue(data, key, value);
       } catch (e) {} // EDGE CASE: no title
     };

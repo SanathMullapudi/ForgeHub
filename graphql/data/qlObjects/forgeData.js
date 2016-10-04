@@ -48,8 +48,8 @@ const ForgeDataType = new GraphQLObjectType({
     loggedInUser: {
       type: UserType,
       resolve: async (_, __, req) => {
-        try { return await User.findById(req.user.id); }
-        catch (err) {return null;}
+        try { return await User.findById(req.authUser.id); }
+        catch (err) {return null;} // Unauthorized Action, but returning error will crash client
       },
     },
     gamesByPopularity: {

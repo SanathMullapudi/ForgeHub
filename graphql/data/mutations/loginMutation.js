@@ -6,7 +6,7 @@ import {
   mutationWithClientMutationId,
 } from 'graphql-relay';
 
-import User from '../database/models/user';
+import {User} from '../database/models';
 
 export default GraphQLLoginMutation = mutationWithClientMutationId({
   name: 'Login',
@@ -15,13 +15,9 @@ export default GraphQLLoginMutation = mutationWithClientMutationId({
     password: {type: new GraphQLNonNull(GraphQLString)},
   },
   outputFields: {
-    token: {
-      type: GraphQLString,
-      resolve: ({token}) => token,
-    },
+    token: { type: GraphQLString },
+    name: { type: GraphQLString },
+    pic: { type: GraphQLString },
   },
-  mutateAndGetPayload: async ({username, password}) => {
-    const token = await User.login(username, password);
-    return {token};
-  },
+  mutateAndGetPayload: async ({username, password}) => await User.login(username, password),
 });

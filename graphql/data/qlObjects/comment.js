@@ -31,6 +31,7 @@ export default CommentType;
 
 export const {
   connectionType: CommentConnection,
+  edgeType: CommentEdge,
 } = connectionDefinitions({
   name: 'CommentConnect',
   nodeType: CommentType,

@@ -27,7 +27,7 @@ userSchema.methods.getToken = function () {
 userSchema.statics.login = async (username, pass) => {
   if (username !== pass) return new Error('Invalid Username & password combination');
   const user = await User.findOne({href: `http://forge.gg/${username}`});
-  return user.getToken();
+  return {token: user.getToken(), name: user.name, pic: user.pic};
 };
 
 userSchema.virtual('name').get(function () {

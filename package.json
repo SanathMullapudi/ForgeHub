@@ -8,7 +8,7 @@
   },
   "private": true,
   "scripts": {
-    "build-ios": "react-native bundle --entry-file='index.ios.js' --bundle-output='./app.bundledJS/main.jsbundle' --reset-cache --dev=false --platform='ios' --assets-dest='./ios'",
+    "bundle-ios": "react-native bundle --entry-file='index.ios.js' --bundle-output='./app.bundledJS/main.jsbundle' --reset-cache --dev=false --platform='ios' --assets-dest='./ios'",
     "packager": "node node_modules/react-native/local-cli/cli.js start",
     "scrapper": "babel-node ./graphql/data/database/tempLoader.js",
     "updatedServer": "npm run update-schema && npm run start",
@@ -28,13 +28,16 @@
     "mongoose": "4.6.0",
     "react": "15.3.1",
     "react-native": "0.33.0",
+    "react-native-gifted-chat": "0.0.10",
     "react-native-orientation": "1.17.0",
     "react-native-router-flux": "3.35.0",
     "react-native-scrollable-tab-view": "0.6.0",
     "react-native-vector-icons": "2.1.0",
     "react-native-video": "0.9.0",
     "react-relay": "0.9.3",
-    "react-relay-network-layer": "1.3.4"
+    "react-relay-network-layer": "1.3.4",
+    "socket.io": "1.4.8",
+    "socket.io-client": "1.4.8"
   },
   "devDependencies": {
     "babel-cli": "6.14.0",
